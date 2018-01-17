@@ -2,7 +2,7 @@
 FROM python:alpine
 MAINTAINER Pablo Veron <pveron2001@gmail.com>
 
-sudo apt-get install mosquitto mosquitto-clients -y
+RUN sudo apt-get install mosquitto mosquitto-clients -y
 
 #RUN adduser --system --disabled-password --disabled-login mosquitto
 
