@@ -2,7 +2,7 @@
 FROM resin/raspberry-pi-alpine-python
 MAINTAINER Pablo Veron <pveron2001@gmail.com>
 
-RUN sudo apt-get install mosquitto mosquitto-clients -y
+RUN apt-get install mosquitto mosquitto-clients -y
 
 #RUN adduser --system --disabled-password --disabled-login mosquitto
 
