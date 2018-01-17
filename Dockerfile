@@ -12,7 +12,7 @@ COPY config /mqtt/config
 VOLUME ["/mqtt/config", "/mqtt/data", "/mqtt/log"]
 
 # Expose MQTT ports
-EXPOSE 1883 9001
+#EXPOSE 1883 9001
 
 CMD /usr/sbin/mosquitto -c /mqtt/config/mosquitto.conf
 
