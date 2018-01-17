@@ -18,4 +18,4 @@ CMD /usr/sbin/mosquitto -c /mqtt/config/mosquitto.conf
 
 #ENV PATH /usr/sbin:$PATH
 
-ENTRYPOINT ["/usr/sbin/mosquitto"]
+#ENTRYPOINT ["/usr/sbin/mosquitto"]
