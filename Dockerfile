@@ -2,11 +2,7 @@
 FROM python:alpine
 MAINTAINER Pablo Veron <pveron2001@gmail.com>
 
-RUN apt-get update && apt-get install -y wget
-
-RUN wget -q -O - http://repo.mosquitto.org/debian/mosquitto-repo.gpg.key | apt-key add -
-RUN wget -q -O /etc/apt/sources.list.d/mosquitto-jessie.list http://repo.mosquitto.org/debian/mosquitto-jessie.list
-RUN apt-get update && apt-get install -y mosquitto
+sudo apt-get install mosquitto mosquitto-clients -y
 
 #RUN adduser --system --disabled-password --disabled-login mosquitto
 
