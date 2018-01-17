@@ -18,4 +18,4 @@ RUN mkdir -p /mqtt/config /mqtt/data /mqtt/log
 
 #ENV PATH /usr/sbin:$PATH
 
-ENTRYPOINT ["/usr/sbin/mosquitto", , "-c", "/mqtt/config/mosquitto.conf"]
+ENTRYPOINT ["/usr/sbin/mosquitto"]
