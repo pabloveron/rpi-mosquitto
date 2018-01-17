@@ -14,4 +14,4 @@ RUN apt-get update && apt-get install -y mosquitto
 #VOLUME ["/mqtt/config", "/mqtt/data", "/mqtt/log"]
 
 EXPOSE 1883 9001
-CMD /usr/sbin/mosquitto -c /mqtt/config/mosquitto.conf
+CMD /usr/sbin/mosquitto -c /mqtt/config1/mosquitto.conf
