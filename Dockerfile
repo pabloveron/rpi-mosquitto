@@ -8,8 +8,8 @@ RUN apk --no-cache add mosquitto mosquitto-clients
 #RUN adduser --system --disabled-password --disabled-login mosquitto
 RUN mkdir -p /mqtt/config /mqtt/data /mqtt/log
 
-COPY config /mqtt/config
-VOLUME ["/mqtt/config", "/mqtt/data", "/mqtt/log"]
+#COPY config /mqtt/config
+#VOLUME ["/mqtt/config", "/mqtt/data", "/mqtt/log"]
 
 # Expose MQTT ports
 #EXPOSE 1883 9001
