@@ -1,5 +1,5 @@
 # Pull base image
-FROM resin/rpi-raspbian:jessie
+FROM python:alpine
 MAINTAINER Pablo Veron <pveron2001@gmail.com>
 
 RUN apt-get update && apt-get install -y wget
