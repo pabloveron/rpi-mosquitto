@@ -1,5 +1,5 @@
 # Pull base image
-FROM python:alpine
+FROM resin/raspberry-pi-alpine-python
 MAINTAINER Pablo Veron <pveron2001@gmail.com>
 
 RUN sudo apt-get install mosquitto mosquitto-clients -y
