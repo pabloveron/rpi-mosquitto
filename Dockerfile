@@ -14,8 +14,8 @@ RUN mkdir -p /mqtt/config /mqtt/data /mqtt/log
 # Expose MQTT ports
 #EXPOSE 1883 9001
 
-CMD ["/usr/sbin/mosquitto", "-c", "/mqtt/config/mosquitto.conf"]
+#CMD /usr/sbin/mosquitto -c /mqtt/config/mosquitto.conf
 
 #ENV PATH /usr/sbin:$PATH
 
-ENTRYPOINT ["/usr/sbin/mosquitto"]
+ENTRYPOINT ["/usr/sbin/mosquitto", , "-c", "/mqtt/config/mosquitto.conf"]
