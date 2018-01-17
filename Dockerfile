@@ -16,8 +16,8 @@ RUN chown -R mosquitto:mosquitto /mqtt
 # Expose MQTT ports
 #EXPOSE 1883 9001
 
-CMD /usr/sbin/mosquitto -c /mqtt/config/mosquitto.conf
+#CMD /usr/sbin/mosquitto -c /mqtt/config/mosquitto.conf
 
 #ENV PATH /usr/sbin:$PATH
 
-#ENTRYPOINT ["/usr/sbin/mosquitto"]
+ENTRYPOINT ["/usr/sbin/mosquitto"]
