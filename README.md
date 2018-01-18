@@ -1,72 +1,55 @@
 # rpi-mosquitto
 
-Raspberry Pi compatible Docker Image with mosquitto MQTT broker.
-Based upon [docker-mosquitto](https://github.com/toke/docker-mosquitto).
+Raspberry Pi compatible Docker Image with mosquitto MQTT broker. This version is configured with volumes to persist data and logs.
 
-## How to run
+## Add user pi into docker group.
 
 ```
-docker run -tip 1883:1883 -p 9001:9001 pascaldevink/rpi-mosquitto
+  sudo usermod -aG docker pi
 ```
 
-Exposes Port 1883 (MQTT) 9001 (Websocket MQTT)
+## Prepare directories for use as volume
 
-Alternatively you can use volumes to make the changes persistent and change the configuration.
 ```
-mkdir -p /srv/mqtt/config/
-mkdir -p /srv/mqtt/data/
-mkdir -p /srv/mqtt/log/
-# place your mosquitto.conf in /srv/mqtt/config/
-# NOTE: You have to change the permissions of the directories
-# to allow the user to read/write to data and log and read from
-# config directory
-# For TESTING purposes you can use chmod -R 777 /srv/mqtt/*
-# Better use "-u" with a valid user id on your docker host
-
-docker run -ti -p 1883:1883 -p 9001:9001 \
--v /srv/mqtt/config:/mqtt/config:ro \
--v /srv/mqtt/log:/mqtt/log \
--v /srv/mqtt/data/:/mqtt/data/ \
---name mqtt pascaldevink/rpi-mosquitto
+sudo mkdir -p /tmp/mosquitto_alpine/data /tmp/mosquitto_alpine/log /tmp/mosquitto_alpine/config
+	
+sudo chmod -R 777 /tmp/*
 ```
 
-## How to create this image
+## Copy next content in /tmp/mosquitto_alpine/config/mosquitto.cond (create if not exists)
 
-Run all the commands from within the project root directory.
+```
+pid_file /var/run/mosquitto.pid
 
-### Build the Docker Image
-```bash
-make build
+persistence true
+persistence_location /mqtt/data
+
+user mosquitto
+
+port 1883
+
+log_dest file /mqtt/log/mosquitto.log
+```  
+
+## Clone git repo in your user directory
+```
+git clone https://github.com/pabloveron/rpi-mosquitto.git
 ```
 
-#### Push the Docker Image to the Docker Hub
-* First use a `docker login` with username, password and email address
-* Second push the Docker Image to the official Docker Hub
-
-```bash
-make push
+## GO TO RPI-MOSQUITTO
+```
+cd rpi-mosquitto
 ```
 
-## License
+## Build Container
+```
+docker build -t docker-mosquitto . --no-cache
+```
 
-The MIT License (MIT)
+## Run
 
-Copyright (c) 2015 Pascal de Vink
+```
+docker run -ti -p 1883:1883 -v /tmp/mosquitto_alpine/data/:/mqtt/data/:rw -v /tmp/mosquitto_alpine/log:/mqtt/log:rw -v /tmp/mosquitto_alpine/config/:/mqtt/config:ro  docker-mosquitto
+```
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
