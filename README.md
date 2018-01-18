@@ -1,6 +1,8 @@
 # rpi-mosquitto
 
+```
 Raspberry Pi compatible Docker Image with mosquitto MQTT broker. This version is configured with volumes to persist data and logs.
+```
 
 ## Add user pi into docker group.
 
