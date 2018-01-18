@@ -1,6 +1,8 @@
 # Pull base image
 FROM resin/raspberry-pi-alpine-python
 MAINTAINER Pablo Veron <pveron2001@gmail.com>
+# Enable OpenRC
+ENV INITSYSTEM on
 
 # Install packages
 RUN apk --no-cache add mosquitto mosquitto-clients
