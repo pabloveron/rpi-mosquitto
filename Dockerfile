@@ -22,5 +22,5 @@ RUN chown -R ${uid}:${gid} -R /mqtt
 
 #ENV PATH /usr/sbin:$PATH
 
-ENTRYPOINT ["/usr/sbin/mosquitto", "-c", "/mqtt/config/mosquitto.conf"]
-#ENTRYPOINT ["/usr/sbin/mosquitto"]
+#ENTRYPOINT ["/usr/sbin/mosquitto", "-c", "/mqtt/config/mosquitto.conf"]
+ENTRYPOINT ["/usr/sbin/mosquitto"]
