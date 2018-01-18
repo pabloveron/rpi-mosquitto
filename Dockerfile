@@ -8,16 +8,21 @@ ENV INITSYSTEM on
 RUN apk --no-cache add mosquitto mosquitto-clients
 
 #RUN adduser --system --disabled-password --disabled-login mosquitto
-
 RUN mkdir -p /mqtt/config /mqtt/data /mqtt/log
+
 COPY config /mqtt/config
-RUN chown -R mosquitto:mosquitto /mqtt
 VOLUME ["/mqtt/config", "/mqtt/data", "/mqtt/log"]
 
+#RUN chown -R mosquitto:mosquitto /mqtt
+#RUN export uid=1000 gid=4
+#RUN chown -R ${uid}:${gid} -R /mqtt
 
-EXPOSE 1883 9001
+# Expose MQTT ports
+#EXPOSE 1883 9001
 
-ADD docker-entrypoint.sh /usr/bin/
+#CMD /usr/sbin/mosquitto -c /mqtt/config/mosquitto.conf
 
-ENTRYPOINT ["docker-entrypoint.sh"]
-CMD ["/usr/sbin/mosquitto", "-c", "/mqtt/config/mosquitto.conf"]
+#ENV PATH /usr/sbin:$PATH
+
+ENTRYPOINT ["/usr/sbin/mosquitto", "-c", "/mqtt/config/mosquitto.conf"]
+#ENTRYPOINT ["/usr/sbin/mosquitto"]
