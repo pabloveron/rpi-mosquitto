@@ -12,7 +12,7 @@ COPY config /mqtt/config
 VOLUME ["/mqtt/config", "/mqtt/data", "/mqtt/log"]
 
 #RUN chown -R mosquitto:mosquitto /mqtt
-RUN export uid=1000 gid=996
+RUN export uid=1000 gid=4
 RUN chown -R ${uid}:${gid} -R /mqtt
 
 # Expose MQTT ports
