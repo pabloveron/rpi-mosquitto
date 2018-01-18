@@ -11,7 +11,7 @@ RUN mkdir -p /mqtt/config /mqtt/data /mqtt/log
 COPY config /mqtt/config
 VOLUME ["/mqtt/config", "/mqtt/data", "/mqtt/log"]
 
-RUN chown -R mosquitto:mosquitto /mqtt
+RUN chown -R 777 /mqtt
 
 # Expose MQTT ports
 #EXPOSE 1883 9001
