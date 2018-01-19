@@ -1,7 +1,8 @@
 # rpi-mosquitto
 
 ```
-Raspberry Pi compatible Docker Image with mosquitto MQTT broker. This version is configured with volumes to persist data and logs.
+Raspberry Pi compatible Docker Image with mosquitto MQTT broker. This version is configured with
+volumes to persist data and logs.
 ```
 
 ## Add user pi into docker group.
@@ -18,7 +19,7 @@ sudo mkdir -p /tmp/mosquitto_alpine/data /tmp/mosquitto_alpine/log /tmp/mosquitt
 sudo chmod -R 777 /tmp/*
 ```
 
-## Copy next content in /tmp/mosquitto_alpine/config/mosquitto.cond (create if not exists)
+## Copy next content in /tmp/mosquitto_alpine/config/mosquitto.conf (create if not exists)
 
 ```
 pid_file /var/run/mosquitto.pid
@@ -51,7 +52,10 @@ docker build -t docker-mosquitto . --no-cache
 ## Run
 
 ```
-docker run -ti -p 1883:1883 -v /tmp/mosquitto_alpine/data/:/mqtt/data/:rw -v /tmp/mosquitto_alpine/log:/mqtt/log:rw -v /tmp/mosquitto_alpine/config/:/mqtt/config:ro  docker-mosquitto
+docker run -ti -p 1883:1883 
+-v /tmp/mosquitto_alpine/data/:/mqtt/data/:rw
+-v /tmp/mosquitto_alpine/log:/mqtt/log:rw 
+-v /tmp/mosquitto_alpine/config/:/mqtt/config:ro  docker-mosquitto
 ```
 
 ##NOTE:
