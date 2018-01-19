@@ -58,8 +58,11 @@ docker run -ti -p 1883:1883
 -v /tmp/mosquitto_alpine/config/:/mqtt/config:ro  docker-mosquitto
 ```
 
-##NOTE:
+## NOTE:
 
 ```
-When try to run the related projects MQTT-Publish and MQTT-Subscribe need to check if the python files match with the ip address of the docker-mosquitto container. In order to check that you can use the combination of "docker ps" and "docker inspect <container ID>". Update the publish.py and subscribe.py if needed.
+When try to run the related projects MQTT-Publish and MQTT-Subscribe need to check
+if the python files match with the ip address of the docker-mosquitto container.
+In order to check that you can use the combination of "docker ps" and 
+"docker inspect <container ID>". Update the publish.py and subscribe.py if needed.
 
