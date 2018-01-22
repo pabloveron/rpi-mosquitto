@@ -63,7 +63,7 @@ docker run -ti -p 1883:1883
 create the bridge network interface
 docker network create --driver=bridge --subnet=162.0.0.0/24 --gateway=162.0.0.1 mqttbridge
 
-start container assiging ip address and bridge network interface
+start container assigning ip address and bridge network interface
 docker run --ip=162.0.0.10 --net=mqttbridge -ti -p 1883:1883 -v /tmp/mosquitto_alpine/data/:/mqtt/data:rw -v /tmp/mosquitto_alpine/log/:/mqtt/log:rw -v /tmp/mosquitto_alpine/config/:/mqtt/config:ro  docker-mosquitto
 
 subscribe to moquito using bridge network interface
