@@ -58,7 +58,7 @@ docker run -ti -p 1883:1883
 -v /tmp/mosquitto_alpine/config/:/mqtt/config:ro  docker-mosquitto
 ```
 
-## Alternatively. How to run using network bridge
+## (How to run using network bridge)
 ```
 create the bridge network interface
 docker network create --driver=bridge --subnet=162.0.0.0/24 --gateway=162.0.0.1 mqttbridge
