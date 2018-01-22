@@ -7,9 +7,9 @@ ENV INITSYSTEM on
 # Install packages
 RUN apk --no-cache add mosquitto mosquitto-clients
 
-RUN mkdir -p /mqtt/config /mqtt/data /mqtt/log
+RUN mkdir -p /mqtt/config /mqtt/data /mqtt/log /mqtt/ccc
 
-COPY config/mosquitto.conf /mqtt/config
+COPY config /mqtt/config
 VOLUME ["/mqtt/config", "/mqtt/data", "/mqtt/log"]
 
 ENTRYPOINT ["/usr/sbin/mosquitto", "-c", "/mqtt/config/mosquitto.conf"]
