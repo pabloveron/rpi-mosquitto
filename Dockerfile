@@ -9,7 +9,7 @@ RUN apk --no-cache add mosquitto mosquitto-clients
 
 RUN mkdir -p /mqtt/config /mqtt/data /mqtt/log
 
-COPY config /mqtt/config
+COPY config/mosquitto.conf /mqtt/config
 VOLUME ["/mqtt/config", "/mqtt/data", "/mqtt/log"]
 
 ENTRYPOINT ["/usr/sbin/mosquitto", "-c", "/mqtt/config/mosquitto.conf"]
