@@ -25,7 +25,7 @@ sudo chmod -R 777 /tmp/*
 pid_file /var/run/mosquitto.pid
 
 persistence true
-persistence_location /mqtt/data
+persistence_location /mqtt/data/
 
 user mosquitto
 
