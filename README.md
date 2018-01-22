@@ -53,8 +53,8 @@ docker build -t docker-mosquitto . --no-cache
 
 ```
 docker run -ti -p 1883:1883 
--v /tmp/mosquitto_alpine/data/:/mqtt/data/:rw
--v /tmp/mosquitto_alpine/log:/mqtt/log:rw 
+-v /tmp/mosquitto_alpine/data/:/mqtt/data:rw
+-v /tmp/mosquitto_alpine/log/:/mqtt/log:rw 
 -v /tmp/mosquitto_alpine/config/:/mqtt/config:ro  docker-mosquitto
 ```
 
